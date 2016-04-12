@@ -1,2 +1,2 @@
 # FeedObserver
-A Observer pattern implementation with observers subscribed by categories.
+An Observer pattern implementation with observers subscribed by categories.
