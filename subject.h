@@ -15,8 +15,8 @@ class Subject
 {
 public:
     virtual ~Subject();
-    virtual void attach(const IObserver *observer, const QString feedName);
-    virtual void detach(const IObserver *observer, const QString feedName);
+    virtual void attach(IObserver *observer, QString feedName);
+    virtual void detach(IObserver *observer, QString feedName);
     virtual void notify() const;
 
 protected:

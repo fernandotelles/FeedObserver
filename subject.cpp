@@ -19,25 +19,22 @@ Subject::~Subject()
     delete m_feedCategories;
 }
 
-void Subject::attach(const IObserver *observer, const QString feedName)
+void Subject::attach(IObserver *observer, QString feedName)
 {
-    if(feedName)
+    if(feedName.isEmpty())
         m_feedCategories->insert(feedName, observer);
     else
         m_observers->append(observer);
 
 }
 
-void Subject::detach(const IObserver *observer, const QString feedName)
+void Subject::detach(IObserver *observer, QString feedName)
 {
-    if(feedName)
-    {
-        if()
-    }
+    if(m_feedCategories->contains(feedName, observer))
+        m_feedCategories->remove(feedName, observer);
     else
-    {
-
-    }
+        m_observers->removeOne(observer);
+    
 }
 
 void Subject::notify() const
