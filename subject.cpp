@@ -21,7 +21,7 @@ Subject::~Subject()
 
 void Subject::attach(IObserver *observer, QString feedName)
 {
-    if(feedName.isEmpty())
+    if(!feedName.isEmpty())
         m_feedCategories->insert(feedName, observer);
     else
         m_observers->append(observer);
@@ -37,7 +37,20 @@ void Subject::detach(IObserver *observer, QString feedName)
     
 }
 
-void Subject::notify() const
+void Subject::notify(QString feedName) const
 {
-
+    if(!feedName.isEmpty())
+    {
+        QMultiHash<QString, IObserver *>::iterator i = m_feedCategories->find(feedName);
+        while (i != m_feedCategories->end() && i.key() == feedName)
+        {
+            i.value()->update();
+            ++i;
+        }
+    }
+    else
+    {
+        foreach(IObserver *observer, *m_observers)
+            observer->update();
+    }
 }

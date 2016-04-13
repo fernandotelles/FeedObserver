@@ -17,7 +17,7 @@ public:
     virtual ~Subject();
     virtual void attach(IObserver *observer, QString feedName);
     virtual void detach(IObserver *observer, QString feedName);
-    virtual void notify() const;
+    virtual void notify(QString feedName) const;
 
 protected:
     Subject();
