@@ -1,9 +1,10 @@
 #ifndef FEEDSUBJECT_H
 #define FEEDSUBJECT_H
 
+#include "subject.h"
 #include <QString>
 
-class FeedSubject
+class FeedSubject : public Subject
 {
 public:
     FeedSubject();

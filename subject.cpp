@@ -3,6 +3,7 @@
 #include <QList>
 #include <QMultiHash>
 #include <QString>
+#include <QDebug>
 
 #include "iobserver.h"
 
@@ -37,20 +38,20 @@ void Subject::detach(IObserver *observer, QString feedName)
     
 }
 
-void Subject::notify(QString feedName) const
+void Subject::notify(QString feedName)
 {
     if(!feedName.isEmpty())
     {
         QMultiHash<QString, IObserver *>::iterator i = m_feedCategories->find(feedName);
         while (i != m_feedCategories->end() && i.key() == feedName)
         {
-            i.value()->update();
+            i.value()->update(this, feedName);
             ++i;
         }
     }
     else
     {
         foreach(IObserver *observer, *m_observers)
-            observer->update();
+            observer->update(this, feedName);
     }
 }

@@ -7,20 +7,18 @@ class QList;
 template <typename K, typename V>
 class QMultiHash;
 
-class QString;
+#include <QString>
 
 class IObserver;
 
 class Subject
 {
 public:
-    virtual ~Subject();
-    virtual void attach(IObserver *observer, QString feedName);
-    virtual void detach(IObserver *observer, QString feedName);
-    virtual void notify(QString feedName) const;
-
-protected:
     Subject();
+    virtual ~Subject();
+    void attach(IObserver *observer, QString feedName = QString(""));
+    void detach(IObserver *observer, QString feedName = QString(""));
+    void notify(QString feedName = QString(""));
 
 private:
     QList<IObserver *> *m_observers;

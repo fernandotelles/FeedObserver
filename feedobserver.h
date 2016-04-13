@@ -5,7 +5,7 @@
 
 #include <QString>
 
-class FeedSubject;
+class Subject;
 
 class FeedObserver : public IObserver
 {
@@ -13,11 +13,10 @@ public:
     FeedObserver();
     ~FeedObserver();
 
-    virtual void update();
+    virtual void update(Subject *subject, QString feedName);
 
 private:
     QString m_state;
-    FeedSubject *m_subject;
 };
 
 #endif // FEEDOBSERVER_H
