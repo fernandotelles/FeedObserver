@@ -11,7 +11,7 @@ public:
     ~FeedSubject();
 
     QString state() const;
-    void setState(const QString state);
+    void setState(const QString state, QString feedName = QString(""));
 
 private:
    QString m_subjectState;

@@ -16,8 +16,8 @@ QString FeedSubject::state() const
     return m_subjectState;
 }
 
-void FeedSubject::setState(const QString state)
+void FeedSubject::setState(const QString state, QString feedName)
 {
     m_subjectState = state;
-    notify();
+    notify(feedName);
 }
