@@ -17,6 +17,8 @@ FeedObserver::~FeedObserver()
 
 void FeedObserver::update(Subject *subject, QString feedName = QString(""))
 {
-    qDebug()<<subject << "" << feedName;
-    //m_state = dynamic_cast<FeedSubject *>(subject)->state();
+    FeedSubject *observable = dynamic_cast<FeedSubject *>(subject);
+
+    qDebug()<<subject << "" << this << "" << observable->state() << "" << feedName;
+    m_state = observable->state();
 }

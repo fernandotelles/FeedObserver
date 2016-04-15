@@ -48,6 +48,9 @@ void Subject::notify(QString feedName)
             i.value()->update(this, feedName);
             ++i;
         }
+
+        foreach(IObserver *observer, *m_observers)
+            observer->update(this, feedName);
     }
     else
     {

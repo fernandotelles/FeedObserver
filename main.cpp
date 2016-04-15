@@ -18,16 +18,17 @@ int main(int argc, char *argv[])
     IObserver *o4 = new FeedObserver;
 
     s1->attach(o1, "esportes");
-    s2->attach(o1, "esportes");
     s1->attach(o2, "esportes");
+
+    s2->attach(o1, "esportes");
     s2->attach(o2, "esportes");
     s2->attach(o2, "musica");
     s2->attach(o3);
     s2->attach(o4);
 
     s1->setState("2", "esportes");
-    //s2->setState("3","musica");
-    //s2->setState("99");
+    s2->setState("3","musica");
+    s2->setState("99");
 
     return a.exec();
 }
